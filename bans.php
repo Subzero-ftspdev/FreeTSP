@@ -85,9 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $CURUSER['class'] >= UC_ADMINISTRATO
 	die;
 }
 
-$res = sql_query("SELECT *
-					FROM bans
-					ORDER BY added DESC") or sqlerr();
+$res = sql_query("SELECT first, last, added, addedby, comment, id  FROM bans ORDER BY added DESC") or sqlerr();
 
 site_header("Bans");
 
