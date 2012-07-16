@@ -192,7 +192,7 @@ if (!isset($self))
 
 if (!isset($self))
 {
-	$valid = @mysql_fetch_row(@mysql_query("SELECT COUNT(*)
+	$valid = @mysql_fetch_row(@mysql_query("SELECT COUNT(id)
 											FROM peers
 											WHERE torrent=$torrentid
 											AND passkey=" . sqlesc($passkey)));
