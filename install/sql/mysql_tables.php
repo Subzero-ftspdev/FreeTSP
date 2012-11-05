@@ -308,7 +308,7 @@ $TABLE[] = "CREATE TABLE postpolls (
   PRIMARY KEY  (`id`)
 )";
 
-$TABLE[] = "CREATE TABLE posts (
+$TABLE[] = "CREATE TABLE `posts` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `topicid` int(10) unsigned NOT NULL default '0',
   `userid` int(10) unsigned NOT NULL default '0',
@@ -320,7 +320,7 @@ $TABLE[] = "CREATE TABLE posts (
   KEY `topicid` (`topicid`),
   KEY `userid` (`userid`),
   FULLTEXT KEY `body` (`body`)
-)";
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;";
 
 $TABLE[] = "CREATE TABLE ratings (
   `torrent` int(10) unsigned NOT NULL default '0',
@@ -426,7 +426,7 @@ $TABLE[] = "CREATE TABLE topics (
   KEY `locked_sticky` (`locked`,`sticky`)
 )";
 
-$TABLE[] = "CREATE TABLE torrents (
+$TABLE[] = "CREATE TABLE `torrents` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `info_hash` varchar(20) character set utf8 collate utf8_bin NOT NULL default '',
   `name` varchar(255) collate utf8_unicode_ci NOT NULL default '',
@@ -459,63 +459,6 @@ $TABLE[] = "CREATE TABLE torrents (
   KEY `visible` (`visible`),
   KEY `category_visible` (`category`,`visible`),
   FULLTEXT KEY `ft_search` (`search_text`,`ori_descr`)
-)";
-
-$TABLE[] = "CREATE TABLE users (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `username` varchar(40) collate utf8_unicode_ci NOT NULL default '',
-  `old_password` varchar(40) collate utf8_unicode_ci NOT NULL default '',
-  `passhash` varchar(32) collate utf8_unicode_ci NOT NULL default '',
-  `secret` varchar(20) character set utf8 collate utf8_bin NOT NULL default '',
-  `email` varchar(80) collate utf8_unicode_ci NOT NULL default '',
-  `status` enum('pending','confirmed') collate utf8_unicode_ci NOT NULL default 'pending',
-  `added` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_login` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_access` datetime NOT NULL default '0000-00-00 00:00:00',
-  `forum_access` datetime NOT NULL default '0000-00-00 00:00:00',
-  `editsecret` varchar(20) character set utf8 collate utf8_bin NOT NULL default '',
-  `privacy` enum('strong','normal','low') collate utf8_unicode_ci NOT NULL default 'normal',
-  `stylesheet` int(10) default '1',
-  `info` text collate utf8_unicode_ci,
-  `acceptpms` enum('yes','friends','no') collate utf8_unicode_ci NOT NULL default 'yes',
-  `ip` varchar(15) collate utf8_unicode_ci NOT NULL default '',
-  `class` tinyint(3) unsigned NOT NULL default '0',
-  `avatar` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'images/default_avatar.gif',
-  `uploaded` bigint(20) unsigned NOT NULL default '0',
-  `downloaded` bigint(20) unsigned NOT NULL default '0',
-  `title` varchar(30) collate utf8_unicode_ci NOT NULL default '',
-  `country` int(10) unsigned NOT NULL default '0',
-  `notifs` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `modcomment` text collate utf8_unicode_ci NOT NULL,
-  `enabled` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'yes',
-  `avatars` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'yes',
-  `donor` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `warned` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `warneduntil` datetime NOT NULL default '0000-00-00 00:00:00',
-  `torrentsperpage` int(3) unsigned NOT NULL default '0',
-  `topicsperpage` int(3) unsigned NOT NULL default '0',
-  `postsperpage` int(3) unsigned NOT NULL default '0',
-  `deletepms` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'yes',
-  `savepms` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `passkey` varchar(32) collate utf8_unicode_ci NOT NULL,
-  `signatures` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'yes',
-  `signature` varchar(225) collate utf8_unicode_ci NOT NULL default '',
-  `dropmenu` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'yes',
-  `stdmenu` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `reputation` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `last_access_numb` bigint(30) NOT NULL DEFAULT '0',
-  `onlinetime` bigint(30) NOT NULL DEFAULT '0',
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `username` (`username`),
-  KEY `status_added` (`status`,`added`),
-  KEY `ip` (`ip`),
-  KEY `uploaded` (`uploaded`),
-  KEY `downloaded` (`downloaded`),
-  KEY `country` (`country`),
-  KEY `last_access` (`last_access`),
-  KEY `enabled` (`enabled`),
-  KEY `warned` (`warned`),
-  KEY `passkey` (`passkey`)
-)";
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;";
 
 ?>
